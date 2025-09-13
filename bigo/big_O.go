@@ -18,6 +18,18 @@ O(n log(n)) - Linearithmic
 
 O(n^2) - Quadratic: nested loops over the same data
 
+Loop over all elements once → O(n)
+
+Nested loops → O(n²), O(n³), etc.
+
+Halving problem each step → O(log n)
+
+Halving but touching all elements → O(n log n)
+
+Recursive branching (recomputing stuff) → O(2ⁿ)
+
+Generating permutations → O(n!)
+
 **/
 
 /**
