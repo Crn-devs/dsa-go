@@ -23,7 +23,7 @@ func BenchmarkFindNemo(b *testing.B) {
 	// var fish = []string{"nemo"}
 	var lotsOfFish = make([]string, 10000)
 
-	for i, _ := range lotsOfFish {
+	for i := range lotsOfFish {
 		lotsOfFish[i] = "dory"
 	}
 	lotsOfFish[9999] = "nemo"
