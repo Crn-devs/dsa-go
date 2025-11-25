@@ -25,4 +25,7 @@ func main() {
 	fmt.Println(AreThereDuplicates())
 	fmt.Println(AreThereDuplicates(1, 2, 3, 4, 5, 0))
 
+	fmt.Println(FindAllDuplicates([]int{1, 2, 3, 1, 4, 5, 2}))
+	fmt.Println(FindAllDuplicates([]int{4, 3, 2, 1, 0, 1, 2, 3}))
+
 }
