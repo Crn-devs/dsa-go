@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 
-	_ "github.com/Crn-devs/dsa-go/recursion/recursion_problems"
 	recursionproblems "github.com/Crn-devs/dsa-go/recursion/recursion_problems"
 )
 
@@ -47,10 +46,27 @@ func main() {
 	// fmt.Println(recursionproblems.IsPalindrome("heeh"))
 	// fmt.Println(recursionproblems.IsPalindrome("heehs"))
 
-	fmt.Println(recursionproblems.SomeRecursive([]int{2, 2, 3, 4}, recursionproblems.IsOdd))
-	fmt.Println(recursionproblems.SomeRecursive([]int{4, 6, 8}, recursionproblems.IsOdd))
-	fmt.Println(recursionproblems.SomeRecursive([]int{2, 2, 2, 2, 2, 19}, recursionproblems.IsOdd))
+	// fmt.Println(recursionproblems.SomeRecursive([]int{2, 2, 3, 4}, recursionproblems.IsOdd))
+	// fmt.Println(recursionproblems.SomeRecursive([]int{4, 6, 8}, recursionproblems.IsOdd))
+	// fmt.Println(recursionproblems.SomeRecursive([]int{2, 2, 2, 2, 2, 19}, recursionproblems.IsOdd))
 
+	// fmt.Println(recursionproblems.FlattenArr([]any{[]any{1, 2, 3}, 1, 2, 3, []any{5, 5, 5}}))
+
+	// fmt.Println(recursionproblems.CapitaliseFirst([]string{"hello", "hi", "hey"}))
+
+	fmt.Println(recursionproblems.StringifyNumbers(map[string]any{
+		"a": 1,
+		"b": map[string]any{
+			"c": 2,
+		},
+	}))
+
+	fmt.Println(recursionproblems.CollectStrings(map[string]any{
+		"a": "hello",
+		"b": map[string]any{
+			"c": "hi again",
+		},
+	}))
 }
 
 func CountDown(num int) {
