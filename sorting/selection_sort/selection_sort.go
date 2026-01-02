@@ -18,7 +18,6 @@ func SelectionSort[S ~[]E, E cmp.Ordered](s S) S {
 				min = j
 			}
 		}
-
 		s[i], s[min] = s[min], s[i]
 	}
 	return s

@@ -6,6 +6,7 @@ import (
 	"slices"
 
 	bubblesort "github.com/Crn-devs/dsa-go/sorting/bubble_sort"
+	insertionsort "github.com/Crn-devs/dsa-go/sorting/insertion_sort"
 	selectionsort "github.com/Crn-devs/dsa-go/sorting/selection_sort"
 )
 
@@ -32,6 +33,14 @@ func main() {
 	// Selection Sort
 	SelecNums := []int{4, 3, 2, 1}
 	fmt.Println(SelecNums)
-	selectionsort.SelectionSort(SelecNums)
+	SelecNums = selectionsort.SelectionSort(SelecNums)
 	fmt.Println(SelecNums)
+
+	// Insertion sort
+
+	InsertNums := []int{3, 7, 4, 2, 1, 5, 7, 9, 5, 7, 8, 9, 2}
+	fmt.Println(InsertNums)
+	InsertNums = insertionsort.InsertionSort(InsertNums)
+	fmt.Println(InsertNums)
+
 }
