@@ -292,20 +292,69 @@ Full Algorithm
 				s[j+1] = s[j]
 			}
 			s[j+1] = curr
-
 		}
 		return s
 	}
 
 
 
-## Sorting Algorithm comparisons
-# Quadratic Sorting Functions
+# Sorting Algorithm comparisons
+## Quadratic Sorting Functions
 
 | Algorithm    | Time Complexity (avg) | Time Complexity (worst) | Time Complexity (best) |
 | ------------ | --------------------- | ----------------------- | ---------------------- |
 | BubbleSort   | $$O(n^2)$$            | $$O(n^2)$$				 | $$O(n)$$				  |
-| SelectionSort| $$O(n^2)$$            | $$O(n^2)$$				 | $$O(n^2)$$				  |
+| SelectionSort| $$O(n^2)$$            | $$O(n^2)$$				 | $$O(n^2)$$			  |
 | InsertionSort| $$O(n^2)$$            | $$O(n^2)$$				 | $$O(n)$$				  |
 
 
+
+
+# Faster Sorting Algorithms
+
+
+## Merge Sort
+
+A Divide and conquer style algorithm
+
+divides up work 
+conquers it 
+merges the output and returns it 
+
+works off the arrays of 0 or 1 items are always sorted mental model
+
+works by chopping a single array into 0,1 elements and then building up a new array
+
+an 8 element array split would look like this 
+```
+[1, 2, 3, 4, 5, 6, 7, 8]
+            |		 
+           / \
+[1, 2, 3, 4]  [5, 6, 7, 8]
+      |            |
+     / \          / \
+[1, 2] [3,4] [5,6] [7,8]
+   |     |     |     |
+  / \   / \   / \   / \
+[1][2] [3][4] [5][6] [7][8]
+```
+
+once the elements have been split down to single digits then techically they are each a sorted array of a single element
+
+from here we just merge the sorted arrays by comparing the elements from the array we are merging using pointer positions and placing them at the correct position
+
+arr1[0] < arr2[0] {
+	[]{arr[0], arr2[0]}
+}else {
+	[]{arr2[0], arr[0]}
+}
+
+```
+[4][1] [16][11] [6][6] [1][25]
+ \ /	\ /    \/     \/
+[1,4]   [11,16]  [6,6]  [1,25]
+    \   /            \   /  
+     [1,4,11,16]     [1,6,6,25]
+               \     /
+            [1,4,6,6,11,16,25]
+```
