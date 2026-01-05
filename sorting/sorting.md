@@ -321,9 +321,9 @@ divides up work
 conquers it 
 merges the output and returns it 
 
-works off the arrays of 0 or 1 items are always sorted mental model
+works off the model that arrays of 0 or 1 items are always sorted
 
-works by chopping a single array into 0,1 elements and then building up a new array
+works by chopping a single array of multiple elements into arrays of 1 element and then building up a new array
 
 an 8 element array split would look like this 
 ```
@@ -341,12 +341,12 @@ an 8 element array split would look like this
 
 once the elements have been split down to single digits then techically they are each a sorted array of a single element
 
-from here we just merge the sorted arrays by comparing the elements from the array we are merging using pointer positions and placing them at the correct position
+from here we just merge the sorted arrays by comparing the elements from the array we are merging together and placing them at the correct position in the new array respective to which element is larger
 
 arr1[0] < arr2[0] {
-	[]{arr[0], arr2[0]}
+	[]{arr1[0], arr2[0]}
 }else {
-	[]{arr2[0], arr[0]}
+	[]{arr2[0], arr1[0]}
 }
 
 ```
@@ -358,3 +358,10 @@ arr1[0] < arr2[0] {
                \     /
             [1,4,6,6,11,16,25]
 ```
+
+the algorithm uses recursion to process the arrays first splitting the array its passed into 2 and passing those back to itself, this happens until there is a single element - the base case and when the base case is satisfied the stack rolls back up merging each of the processed arrays until it returns a sorted single array from the origonal caller 
+
+Merge Sort big O (Time)
+best case: $$O(n log n)$$ // list is already sorted
+Avg case: $$O(n log n)$$
+Worst case: $$O(n log n)$$

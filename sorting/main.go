@@ -7,6 +7,7 @@ import (
 
 	bubblesort "github.com/Crn-devs/dsa-go/sorting/bubble_sort"
 	insertionsort "github.com/Crn-devs/dsa-go/sorting/insertion_sort"
+	mergesort "github.com/Crn-devs/dsa-go/sorting/merge_sort"
 	selectionsort "github.com/Crn-devs/dsa-go/sorting/selection_sort"
 )
 
@@ -42,5 +43,9 @@ func main() {
 	fmt.Println(InsertNums)
 	InsertNums = insertionsort.InsertionSort(InsertNums)
 	fmt.Println(InsertNums)
+
+	a := []int{10010, 20, 30, 40, 50, 60, 60, 60, 65, 70, 71}
+
+	fmt.Println(mergesort.MergeSort(a))
 
 }

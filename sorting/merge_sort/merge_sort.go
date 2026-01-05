@@ -2,6 +2,16 @@ package mergesort
 
 func merge(a, b []int) []int {
 
+	if len(a) <= 0 && len(b) <= 0 {
+		return []int{}
+	}
+	if len(a) == 0 {
+		return b
+	}
+	if len(b) == 0 {
+		return a
+	}
+
 	// create pointers (start of each array)
 	p1, p2 := 0, 0
 	// create empty array
@@ -35,8 +45,8 @@ func MergeSort(arr []int) []int {
 	mid := len(arr) / 2
 
 	// recursive call to mergeSort
-	left := MergeSort(arr[mid:])
-	right := MergeSort(arr[:mid])
+	left := MergeSort(arr[:mid])
+	right := MergeSort(arr[mid:])
 
 	return merge(left, right)
 }
