@@ -1,6 +1,9 @@
-package linearsearch
+package searching
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestIndexOfString(t *testing.T) {
 
@@ -12,4 +15,11 @@ func TestIndexOfString(t *testing.T) {
 	if got != 0 {
 		t.Errorf(`IndexOf({"1", "2", "3", "4"}, "1") = %d; want 0`, got)
 	}
+}
+
+func ExampleLinearSearch() {
+
+	fmt.Println(LinearSearch([]int{1, 2, 3}, 3))
+	// Output: 2
+
 }
