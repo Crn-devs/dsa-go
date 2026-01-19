@@ -30,7 +30,7 @@ func BinarySearch(arr []int, target int) int {
 
 // a generic version of binary search: takes in a comparrsion function cmp to compare the elements
 // this mirrors the slices.binarysearchfunc method in the slices package
-func BinarySearchFunc[T any](arr []T, x T, cmp func(a, b T) int) int {
+func BinarySearchGeneric[T any](arr []T, x T, cmp func(a, b T) int) int {
 
 	if len(arr) <= 0 {
 		return -1
