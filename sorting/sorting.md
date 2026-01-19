@@ -7,13 +7,13 @@ A website which shows the basics can be found [Here](https://www.toptal.com/deve
 
 
 # Objectives
-Implement the following sorting algorithms in Go either via type or generically doing so inline with the standard library implementations
+Implement the following sorting algorithms in Go either via type or generically doing so inline with the standard library implementations, 
 
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
 
-# Built in Sorting in Go
+# Built in Sorting in Go (production sorting patterns)
 In go the sorting algorithms live inside the slices package. 
 
 Sorting functions are generic and work for any ordered built in type orderable types are inside the cmp package on go.dev [Ordered_types](https://pkg.go.dev/cmp#Ordered)
@@ -60,7 +60,7 @@ here is an example using cmp.Compare with the lengths of words instead of alphab
 A Sorting algorithm where larger collection elements bubble to the top
 
 bubble sort in basics steps through a collection of elements and checks if the first element is larger than the second
-if so the elements are swapped and the the algorithm continues passing one loop for each element in the array
+if so the elements are swapped and the the algorithm continues passing until the array is sorted
 
 so for the array [4,3,2,1]
 
@@ -97,6 +97,8 @@ after third pass [1,2,3,4] array is sorted
 
 We dont need to pass through the full array each time, we can begin at the last element in the outer loop
 and only loop up to the outerloop-1 (i - 1) on the inner loop giving us only the left over comparisons 
+
+After each outer iteration, the largest element is in its final position at the end, so the inner loop can safely ignore those elements
 
 i=4, j goes up to 4-1
 i=3, j goes up to 3-1
@@ -359,9 +361,117 @@ arr1[0] < arr2[0] {
             [1,4,6,6,11,16,25]
 ```
 
-the algorithm uses recursion to process the arrays first splitting the array its passed into 2 and passing those back to itself, this happens until there is a single element - the base case and when the base case is satisfied the stack rolls back up merging each of the processed arrays until it returns a sorted single array from the origonal caller 
+the algorithm uses recursion to process the arrays first splitting the array passed into 2 and passing those back to the same function, this happens until there is a single element - the base case and when the base case is satisfied the stack rolls back up merging each of the processed arrays until it returns a sorted single array from the origonal caller.
 
 Merge Sort big O (Time)
 best case: $$O(n log n)$$ // list is already sorted
 Avg case: $$O(n log n)$$
 Worst case: $$O(n log n)$$
+
+## Quick Sort
+
+recursive algorithm
+
+similar to merge it exploits the fact that arrays of 0 or 1 element are always sorted
+
+works off of a pivot principle where an element is chosen as a pivot and all elements greater are put to its right and all elements less than are put to its left
+
+lets look at an example flow of quick sort
+
+lets say we have the following array
+
+[1,5,7,32,77,18,12,22,5]
+
+quick sort has a few methods of implementation for this we will use the lomuto partition algorithm to implement the partitioning
+
+for quick sort to work we need the following 
+
+a pivot/partition
+a base case to stop the recursion
+a starting index in which to compare the pivot to
+
+these can be defined as the following
+
+high = pivot or the last element of the array
+low = 0 beginning index
+base case is while low < high each call is with a differing input array
+
+[1,5,7,32,4,5]
+
+first iteration
+j = 0
+smaller window = -1
+pivot = last index value 5
+
+1<5 true so window is increased and element is swapped to be in place of smaller window index
+smaller window = 0
+element 1 is swapped to position 0
+
+j=1
+5<5 false so nothing happens
+smaller window still 0 
+
+j=2
+7<5 false so nothing happens
+smaller window still 0 
+
+j=3
+32<5 false so nothing happens
+smaller window still 0 
+
+j=4
+4<5 true so window is increased and the elements are swapped
+smaller window increases to 1
+element 4 is swapped to be in place of smaller window index
+array goes from  [1,5,7,32,4,5] to [1,4,7,32,5,5]
+
+j=5 so the loop finishes as its hit its condition j < high
+
+once the loop finishes we have the following 
+
+smaller window counter value at 1
+our pivot value which was 5
+our less than elements contained inside the smaller window counter up to its value as an index
+we now take our pivot value and swap it to be at the end of the smaller than window
+
+smaller than window = 1 pivot value goes at index 2 leaving us with the following array
+
+[1,4,5,7,32,5] all elements to the left are less than / all to the right are greater than
+
+the element is in its correct position
+now the recursion begins 
+
+we re-call quick sort passing in the array segments we have created by using pivot as our differing value
+
+quickSort(arr, low, pivot-1) // this is the left side of the array (Less than)
+[1,4,5]
+
+quickSort(arr, pivot+1, high)// this is the right side of the array (greater)
+[7,32,5]
+
+these 2 partitions of the array are again processed with the above steps here is a brief example
+
+[7,32,5]
+
+5 is the pivot
+j = 0
+smaller window = -1
+
+7<5 false nothing happens
+
+j=1
+32<5 false nothing happens
+
+j=2
+5<5 false nothing happens
+
+loop finishes
+pivot is moved to smaller window index + 1 so index 0
+array goes from [7,32,5] to [5,7,32] leaving us with a sorted array half
+
+Quick Sort big O (Time)
+best case: $$O(n log n)$$
+Avg case: $$O(n log n)$$
+Worst case: $$O(n log n)$$
+
+

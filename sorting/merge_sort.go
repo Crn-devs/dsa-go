@@ -1,4 +1,4 @@
-package mergesort
+package sorting
 
 func merge(a, b []int) []int {
 
